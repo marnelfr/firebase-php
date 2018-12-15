@@ -23,40 +23,17 @@ class App {
 
     public function getDatabase() {
         if($this->db === null) {
-            $serviceAccount = ServiceAccount::fromJsonFile(dirname(__DIR__) . '/app/config/test-b390c-a5cf2394a813.json');
-            $firebase = (new Factory())->withServiceAccount($serviceAccount)->create();
-            $this->db = $firebase->getDatabase();
+            // TODO: implement connexion
         }
         return $this->db;
     }
 
     public function addPost($data) {
-        if($data['pseudo'] !== ''){
-            $data['createdAt'] = new DateTime();
-            $this->getDatabase()
-                 ->getReference('post')
-                 ->push($data);
-
-            $this->getDatabase()
-                ->getReference('uses')
-                ->push($data['pseudo']);
-        }
+        // TODO: Imprement add post
     }
 
-    public function userPosts($r) {
-        $datum = $this->getDatabase()
-            ->getReference('users')
-            ->orderByKey()
-            ->equalTo($r)
-            ->getValue();
-
-        $username = end($datum);
-
-        $posts = $this->getDatabase()
-                      ->getReference('post')
-                      ->orderByChild('pseudo')
-                      ->equalTo($username)
-                      ->getValue();
+    public function userPosts($key) {
+        // TODO: Imprement the user posts
 
         return [
             'user' => $username,
@@ -65,34 +42,20 @@ class App {
     }
 
     public function usersList() {
-        $r = $this->getDatabase()
-            ->getReference('users')
-            ->getValue();
-        return $r;
+        // TODO: Imprement users list
     }
 
     public function getPost($key) {
-        return $this->getDatabase()
-            ->getReference('post')
-            ->orderByKey()
-            ->equalTo($key)
-            ->getValue();
+        // TODO: Imprement get post
     }
 
     public function editPost($key, $data) {
-        $this->getDatabase()->getReference('post')
-            ->update([
-                $key => $data
-            ]);
+        // TODO: Imprement update post
         return $this->getPost($key);
     }
 
     public function removePost($key) {
-        return $this->getDatabase()
-            ->getReference('post')
-            ->set([
-                $key => null
-            ]);
+        // TODO: Imprement remove post
     }
 
 

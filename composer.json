@@ -1,0 +1,20 @@
+{
+    "name": "marnel/blog",
+    "description": "blog pour tester firebase",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marnel Fresh'eur",
+            "email": "gmlginolias@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "minimum-stability": "beta",
+    "require": {
+        "kreait/firebase-php": "^4.18"
+    }
+}
